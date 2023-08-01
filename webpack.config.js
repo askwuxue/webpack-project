@@ -31,6 +31,10 @@ module.exports = {
       {
         test: /\.css$/,
         use: [(process.env.NODE_ENV === 'development' ? 'style-loader' : MiniCssExtractPlugin.loader), 'css-loader'],
+      },
+      {
+        test: /\.less$/,
+        use: [(process.env.NODE_ENV === 'development' ? 'style-loader' : MiniCssExtractPlugin.loader), 'css-loader', 'less-loader'],
       }
     ]
   },
