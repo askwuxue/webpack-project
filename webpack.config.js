@@ -10,6 +10,10 @@ module.exports = {
     filename: "[name].js",
     path: path.resolve(__dirname + '/build')
   },
+  devServer: {
+    hot: true,
+    open: true
+  },
   module: {
     rules: [
       {
@@ -19,6 +23,31 @@ module.exports = {
           options: {
             presets: ['@babel/preset-env'],
           },
+        },
+      },
+      {
+        test: /\.jsx$/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            "presets": [
+              ["@babel/preset-react", {
+                "runtime": "automatic"
+              }]
+            ]
+          }
+        },
+      },
+      {
+        test: /\.tsx$/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            'presets': [["@babel/preset-react", {
+              "runtime": "automatic"
+            }],
+            '@babel/preset-typescript']
+          }
         },
       },
       {
@@ -47,8 +76,13 @@ module.exports = {
       }
     ]
   },
-  plugins: [new ESLintPlugin(), new HtmlWebpackPlugin(), new MiniCssExtractPlugin()],
+  plugins: [ 
+    new ESLintPlugin(), 
+    new HtmlWebpackPlugin({
+      template: './public/index.html',
+    }), 
+    new MiniCssExtractPlugin()],
   resolve: {
-    extensions: ['.ts', '.js'],
+    extensions: ['.ts', '.js', '.tsx', '.jsx'],
   }
 }

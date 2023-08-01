@@ -9,5 +9,10 @@
 // import './index.css'
 
 // 对less的支持
-import './style.less'
+// import './style.less'
+
+// import { App } from './App.jsx';
+import { App } from './App.tsx';
+
+console.log(App);
 
