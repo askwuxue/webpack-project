@@ -1,4 +1,6 @@
-import { a } from './index'
+// import { a } from './index'
 
 // arr.map(item => item + 1);
-console.log(a)
+// console.log(a)
+
+import './index.css'
