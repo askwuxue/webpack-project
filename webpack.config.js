@@ -30,11 +30,20 @@ module.exports = {
       // style-loader 的作用是将样式注入到style标签中
       {
         test: /\.css$/,
-        use: [(process.env.NODE_ENV === 'development' ? 'style-loader' : MiniCssExtractPlugin.loader), 'css-loader'],
+        use: [ 
+          (process.env.NODE_ENV === 'development' ? 'style-loader' : MiniCssExtractPlugin.loader), 
+          'css-loader', 
+          'postcss-loader'
+        ],
       },
       {
         test: /\.less$/,
-        use: [(process.env.NODE_ENV === 'development' ? 'style-loader' : MiniCssExtractPlugin.loader), 'css-loader', 'less-loader'],
+        use: [
+          (process.env.NODE_ENV === 'development' ? 'style-loader' : MiniCssExtractPlugin.loader), 
+          'css-loader',
+          'postcss-loader',
+          'less-loader'
+        ],
       }
     ]
   },
